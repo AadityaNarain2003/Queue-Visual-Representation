@@ -10,11 +10,13 @@ public class QVRQueue//custom linkedlist implementation using head and tail poin
             this.next=null;
         }
     }
+    static int total;
     int size;
     Node head,tail;
     public QVRQueue()
     {
         size=0;
+        total=0;
         head=null;
         tail=null;
     }
@@ -22,6 +24,7 @@ public class QVRQueue//custom linkedlist implementation using head and tail poin
     {
         Node n=new Node(num);
         ++size;
+        ++total;
         if(head==null)
         {
             head=n;
@@ -66,5 +69,45 @@ public class QVRQueue//custom linkedlist implementation using head and tail poin
             ++i;
         }
         return n;
+    }
+    public int max()
+    {
+        int max=Integer.MIN_VALUE;
+        Node temp=head;
+        if(temp==null)
+        {
+            return 0;
+        }
+        int i=0;
+        while(temp!=null)
+        {
+            if(temp.num>max)
+            {
+                max=temp.num;
+            }
+            temp=temp.next;
+            ++i;
+        }
+        return max;
+    }
+    public int min()
+    {
+        int max=Integer.MAX_VALUE;
+        Node temp=head;
+        if(temp==null)
+        {
+            return 0;
+        }
+        int i=0;
+        while(temp!=null)
+        {
+            if(temp.num<max)
+            {
+                max=temp.num;
+            }
+            temp=temp.next;
+            ++i;
+        }
+        return max;
     }
 }
